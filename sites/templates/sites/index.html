@@ -1,0 +1,15 @@
+{% extends 'sites/base.html' %}
+{% block title %}首页{% endblock %}
+{% block main %}
+    <div class="container">
+        <div class="row">
+            {% if nav_list %}
+                {% for nav in nav_list %}
+                    <a class="nav-link" href="{{nav.url}}">
+                      {{nav.articles.title}}
+                    </a>
+                {% endfor %}
+      {% endif %}
+        </div>
+    </div>
+{% endblock %}

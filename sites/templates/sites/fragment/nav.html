@@ -1,0 +1,23 @@
+<div class="container">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="bg-success">
+    <h1 class="container text-white">{{ sites_title }}</h1>
+    </div>
+        <div class="container">
+  <ul class="navbar-nav">
+      {% if nav_list %}
+                {% for nav in nav_list %}
+                    {% if request.path|slice:'7' == nav.url %}
+                        <li class="nav-item active">
+                    {% else %}
+                        <li class="nav-item">
+                    {% endif %}
+                    <a class="nav-link" href="{{nav.url}}">
+                      {{nav.title}}
+                    </a>
+                </li>
+                {% endfor %}
+      {% endif %}
+  </ul></div>
+</nav>
+</div>

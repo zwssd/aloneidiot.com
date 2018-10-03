@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-{% if nav_list %}
-    <ul>
-    {% for nav in nav_list %}
-    <li><a href="/polls/{{nav.id}}/">{{nav.title}}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>问题为空</p>
-{% endif %}
-
-</body>
-</html>
+{% include 'sites/include/header.html' %}
+{% include 'sites/fragment/nav.html' %}
+{% block main %}{% endblock %}
+{% include 'sites/include/footer.html' %}

@@ -82,6 +82,9 @@ DATABASES = {
         'NAME': 'aloneidiot',
         'USER': 'root',
         'PASSWORD': '123123',
+        #'OPTIONS': {
+            #'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        #}
     }
 }
 
@@ -123,3 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+# 添加 img 、 css 和 js 等静态文件目录
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+SITES_TITLE = 'AloneIdiot'

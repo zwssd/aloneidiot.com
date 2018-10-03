@@ -15,14 +15,6 @@ class User(models.Model):
     def __str__(self):
         return self.name
 
-class Nav(models.Model):
-    title = models.CharField(max_length=50, verbose_name='导航栏标题')
-    parent = models.IntegerField(verbose_name='上一级导航栏id')
-    url = models.CharField(max_length=255, verbose_name='导航栏地址')
-    sort = models.IntegerField(default=0,verbose_name='导航栏排序')
-    def __str__(self):
-        return self.title
-
 class Content(models.Model):
     content = models.TextField(verbose_name='内容')
     create_time = models.DateTimeField(verbose_name='创建时间')
@@ -35,7 +27,17 @@ class Category(models.Model):
     def __str__(self):
         return self.cname
 
-class Article(models.Model):
+class Nav(models.Model):
+    title = models.CharField(max_length=50, verbose_name='导航栏标题')
+    parent = models.IntegerField(verbose_name='上一级导航栏id')
+    url = models.CharField(max_length=255, verbose_name='导航栏地址')
+    sort = models.IntegerField(default=0,verbose_name='导航栏排序')
+    #外键
+    articles = models.ForeignKey('Articles', on_delete=models.DO_NOTHING)
+    def __str__(self):
+        return self.title
+
+class Articles(models.Model):
     title = models.CharField(max_length=100, verbose_name='文章标题')
     summary = models.CharField(max_length=100, verbose_name='文章摘要')
     imgurl = models.CharField(max_length=255, verbose_name='图片地址')
@@ -49,13 +51,15 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+
+
 class Comments(models.Model):
     content = models.CharField(max_length=255, verbose_name='评论内容')
     ip = models.CharField(max_length=50, verbose_name='评论IP')
     create_time = models.DateTimeField(verbose_name='创建时间')
     edit_time = models.DateTimeField(verbose_name='编辑时间')
     #外键
-    article = models.ForeignKey('Article', on_delete=models.DO_NOTHING)
+    articles = models.ForeignKey('Articles', on_delete=models.DO_NOTHING)
     user = models.ForeignKey('User', on_delete=models.DO_NOTHING)
     def __str__(self):
         return self.content
