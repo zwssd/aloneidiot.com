@@ -19,6 +19,7 @@ class Nav(models.Model):
     title = models.CharField(max_length=50, verbose_name='导航栏标题')
     parent = models.IntegerField(verbose_name='上一级导航栏id')
     url = models.CharField(max_length=255, verbose_name='导航栏地址')
+    sort = models.IntegerField(default=0,verbose_name='导航栏排序')
     def __str__(self):
         return self.title
 
@@ -44,7 +45,7 @@ class Article(models.Model):
     edit_time = models.DateTimeField(verbose_name='编辑时间')
     #外键
     content = models.ForeignKey('Content', on_delete=models.CASCADE)
-    category = models.ForeignKey('Category', on_delete=models.CASCADE)
+    category = models.ForeignKey('Category', on_delete=models.DO_NOTHING)
     def __str__(self):
         return self.title
 
@@ -54,7 +55,7 @@ class Comments(models.Model):
     create_time = models.DateTimeField(verbose_name='创建时间')
     edit_time = models.DateTimeField(verbose_name='编辑时间')
     #外键
-    article = models.ForeignKey('Article', on_delete=models.CASCADE)
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
+    article = models.ForeignKey('Article', on_delete=models.DO_NOTHING)
+    user = models.ForeignKey('User', on_delete=models.DO_NOTHING)
     def __str__(self):
         return self.content
