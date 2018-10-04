@@ -7,6 +7,7 @@ from django.conf import settings
 
 def index(request):
     nav_list = Nav.objects.order_by('sort')
+    artice_list = Articles.objects.all()
     template = 'sites/index.html'
-    context = {'nav_list': nav_list, 'sites_title':settings.SITES_TITLE}
+    context = {'nav_list': nav_list, 'article_list': artice_list, 'sites_title':settings.SITES_TITLE}
     return render(request, template, context)

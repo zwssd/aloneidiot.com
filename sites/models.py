@@ -32,8 +32,6 @@ class Nav(models.Model):
     parent = models.IntegerField(verbose_name='上一级导航栏id')
     url = models.CharField(max_length=255, verbose_name='导航栏地址')
     sort = models.IntegerField(default=0,verbose_name='导航栏排序')
-    #外键
-    articles = models.ForeignKey('Articles', on_delete=models.DO_NOTHING)
     def __str__(self):
         return self.title
 
