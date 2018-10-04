@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | {{ sites_title }}</title>
+    <title>{% block title %}{% endblock %} | {{ sites_title }}</title>
 
     <!-- core CSS -->
     <link href="{%  static 'sites/css/bootstrap.min.css' %}" rel="stylesheet">
