@@ -1,74 +1,44 @@
-{% load static %}
-<header id="header">
-        <div class="top-bar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-xs-12">
-                        <div class="top-number">
-                            <p><i class="fa fa-mail-reply"></i>mail:349705141@qq.com</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-xs-12">
-                        <div class="social">
-                            <ul class="social-share">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                            </ul>
-                            <div class="search">
-                                <form role="form">
-                                    <input type="text" class="search-form" autocomplete="off" placeholder="Search">
-                                    <i class="fa fa-search"></i>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/.container-->
-        </div>
-        <!--/.top-bar-->
-
-        <nav class="navbar navbar-inverse" role="banner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html"><img src="{%  static 'sites/images/logo.png' %}" alt="logo"></a>
-                </div>
-
-                <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        {% if nav_list %}
+<!--
+Fixed Navigation
+==================================== -->
+<header class="navigation navbar navbar-fixed-top">
+   <div class="container">
+      <div class="navbar-header">
+         <!-- responsive nav button -->
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         </button>
+         <!-- /responsive nav button -->
+         <!-- logo -->
+         <a class="navbar-brand logo" href="index.html">
+            <img class="logo-default" src="static/sites/images/logo.png" alt="logo" />
+            <img class="logo-white" src="static/sites/images/logo-white.png" alt="logo" />
+         </a>
+         <!-- /logo -->
+      </div>
+      <!-- main nav -->
+      <nav class="collapse navbar-collapse navbar-right">
+         <ul id="nav" class="nav navbar-nav menu">
+             {% if nav_list %}
                             {% for nav in nav_list %}
-                                 {% if request.path|slice:'7' == nav.url %}
-                                     <li class="active">
-                                         {% else %}
-                                     <li>
-                                 {% endif %}
-                            <a href="{{nav.url}}">{{nav.title}}</a></li>
+                                     <li><a href="{{nav.url}}">{{nav.title}}</a></li>
                             {% endfor %}
                         {% endif %}
-                        <!--<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog-item.html">Blog Single</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="404.html">404</a></li>
-                            </ul>
-                        </li>-->
-                    </ul>
-                </div>
-            </div>
-            <!--/.container-->
-        </nav>
-        <!--/nav-->
-
-    </header>
-    <!--/header-->
+               <!--<li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="404.html">404 Page</a></li>
+                     <li><a href="blog.html">Blog Page</a></li>
+                  </ul>
+               </li>-->
+         </ul>
+      </nav>
+      <!-- /main nav -->
+   </div>
+</header>
+<!--
+End Fixed Navigation
+==================================== -->
