@@ -48,7 +48,7 @@ class Nav(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u"导航条"
         ordering = ['-create_time']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('aiblog', u"博客管理")
 
     def __unicode__(self):
         return self.name
@@ -70,7 +70,7 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'分类'
         ordering = ['rank', '-create_time']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('aiblog', u"博客管理")
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
@@ -119,7 +119,7 @@ class Article(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'文章'
         ordering = ['rank', '-is_top', '-pub_time', '-create_time']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('aiblog', u"博客管理")
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
@@ -143,7 +143,7 @@ class Column(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'专栏'
         ordering = ['-create_time']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('aiblog', u"博客管理")
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
@@ -168,7 +168,7 @@ class Carousel(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'轮播'
         ordering = ['-create_time']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('aiblog', u"博客管理")
 
 
 class News(models.Model):
@@ -183,7 +183,7 @@ class News(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'资讯'
         ordering = ['-title']
-        app_label = string_with_title('blog', u"博客管理")
+        app_label = string_with_title('aiblog', u"博客管理")
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse

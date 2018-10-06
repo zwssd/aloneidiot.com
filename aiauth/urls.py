@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from vmaig_auth.views import UserControl
+from aiauth.views import UserControl
 
 
 urlpatterns = [

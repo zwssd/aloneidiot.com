@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'aicms',
     'aiblog',
     'aiauth',
@@ -115,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'
 
 TIME_ZONE = 'UTC'
 
@@ -133,4 +134,94 @@ STATIC_URL = '/static/'
 # 添加 img 、 css 和 js 等静态文件目录
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
-SITES_TITLE = 'AloneIdiot'
+SITES_TITLE = 'Aloneidiot'
+
+# 设置user model
+AUTH_USER_MODEL = "aiauth.VmaigUser"
+
+# log配置
+LOG_FILE = "./all.log"
+
+LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': True,
+
+        'filters': {
+            'require_debug_false': {
+                '()': 'django.utils.log.RequireDebugFalse'
+                }
+            },
+        'formatters': {
+            'simple': {
+                'format': '[%(levelname)s] %(module)s : %(message)s'
+                },
+            'verbose': {
+                'format':
+                    '[%(asctime)s] [%(levelname)s] %(module)s : %(message)s'
+                }
+            },
+
+        'handlers': {
+            'console': {
+                'level': 'INFO',
+                'class': 'logging.StreamHandler',
+                'formatter': 'verbose'
+                },
+            'file': {
+                'level': 'INFO',
+                'class': 'logging.FileHandler',
+                'formatter': 'verbose',
+                'filename': LOG_FILE,
+                'mode': 'a',
+                },
+            'mail_admins': {
+                'level': 'ERROR',
+                'class': 'django.utils.log.AdminEmailHandler',
+                'filters': ['require_debug_false']
+                }
+            },
+        'loggers': {
+            '': {
+                'handlers': ['file', 'console'],
+                'level': 'INFO',
+                'propagate': True,
+                },
+            'django': {
+                'handlers': ['file', 'console'],
+                'level': 'DEBUG',
+                'propagate': True,
+                },
+            'django.request': {
+                'handlers': ['mail_admins', 'console'],
+                'level': 'ERROR',
+                'propagate': True,
+                },
+            }
+        }
+
+
+# cache配置
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake',
+        'options': {
+            'MAX_ENTRIES': 1024,
+        }
+    },
+    'memcache': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        # 'LOCATION': 'unix:/home/billvsme/memcached.sock',
+        'LOCATION': '127.0.0.1:11211',
+        'options': {
+            'MAX_ENTRIES': 1024,
+        }
+    },
+}
+
+# 分页配置
+PAGE_NUM = 5
+
+# 网站标题等内容配置
+WEBSITE_TITLE = u'Ai博客'
+WEBSITE_WELCOME = u'欢迎来到Ai博客'

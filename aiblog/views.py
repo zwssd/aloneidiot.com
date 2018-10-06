@@ -64,7 +64,7 @@ class BaseMixin(object):
 
 
 class IndexView(BaseMixin, ListView):
-    template_name = 'blog/index.html'
+    template_name = 'aiblog/index.html'
     context_object_name = 'article_list'
     paginate_by = settings.PAGE_NUM  # 分页--每页的数目
 

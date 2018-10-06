@@ -15,7 +15,7 @@
             {% if forloop.first%}
             <div class="item active">
                 <a href="{% url 'article-detail-view' carousel_page.article.en_title %}">
-                    <img src="{{carousel_page.img}}" alt="{{carousel_page.title}}">
+                    <img src="{{carousel_page.img}}" alt="{{carousel_page.title}}" class="img-thumbnail">
                     <div class="carousel-caption">
                         <h4>{{carousel_page.title}}</h4>
                         {% autoescape off%}

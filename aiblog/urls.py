@@ -1,11 +1,12 @@
+from django.urls import path
 from django.conf.urls import url
 from aiblog.views import (IndexView, ArticleView, AllView, SearchView,
                         ColumnView, UserView, NewsView, TagView, CategoryView)
 from django.views.generic import TemplateView, DetailView
-from blog.models import News
+from aiblog.models import News
 
 urlpatterns = [
-        url(r'^$', IndexView.as_view(), name='index-view'),
+    path('', IndexView.as_view(), name='index-view'),
         url(r'^article/(?P<slug>\w+).html$',
             ArticleView.as_view(), name='article-detail-view'),
         url(r'^all/$', AllView.as_view(), name='all-view'),
